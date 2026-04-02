@@ -1,0 +1,13 @@
+BasedOnStyle: Google
+Language: Cpp
+Standard: c++20
+
+IndentWidth: 4
+AllowAllConstructorInitializersOnNextLine: false
+
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: Inline
+AllowShortLoopsOnASingleLine: false
