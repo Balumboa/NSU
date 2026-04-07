@@ -1,0 +1,3 @@
+/home/balumboa/AaSD/NSU/avtomat/Doctors_and_patients/build/CMakeFiles/main.dir
+/home/balumboa/AaSD/NSU/avtomat/Doctors_and_patients/build/CMakeFiles/edit_cache.dir
+/home/balumboa/AaSD/NSU/avtomat/Doctors_and_patients/build/CMakeFiles/rebuild_cache.dir

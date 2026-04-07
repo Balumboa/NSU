@@ -24,10 +24,10 @@ int get_capacity_vec(vector *vec);
 
 void print_vec(vector *vec);
 
-void scan_vec(vector *vec);
+vector *scan_vec();
 
-void create_vec(vector *vec, int n);
+vector *create_vec(int n);
 
-void delete_vec(vector *vec);
+void delete_vec(vector **vec);
 
 #endif

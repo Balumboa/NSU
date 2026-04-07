@@ -1,197 +1,120 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "database.h"
-#include "doctor.h"
-#include "patient.h"
+#include "Base.h"
+#include "Doctor.h"
+#include "Patient.h"
+#include "to_bin.h"
 
-void printMenu() {
-    printf("\n========== MEDICAL DATABASE ==========\n");
-    printf("1. Add patient\n");
-    printf("2. Add doctor\n");
-    printf("3. Show all patients\n");
-    printf("4. Show all doctors\n");
-    printf("5. Save to text files\n");
-    printf("6. Load from text files\n");
-    printf("7. Save to binary files\n");
-    printf("8. Load from binary files\n");
-    printf("9. Sort binary files for fast search\n");
-    printf("10. Find patient by doctor (binary search in file)\n");
-    printf("11. Find doctor by patient (sequential in file)\n");
-    printf("0. Exit\n");
-    printf("=====================================\n");
-    printf("Your choice: ");
+void interface() {
+    printf("=========Операции=========\n");
+    printf("Чтобы показать информацию о докторах введите 1\n");
+    printf("Чтобы добавить доктора введите 2\n");
+    printf("Чтобы показать информацию о нужном докторе введите 3\n");
+    printf("Чтобы показать информацию о пациентах введите 4\n");
+    printf("Чтобы добавить пациента введите 5\n");
+    printf("Чтобы показать информацию о нужном пациенте введите 6\n");
+    printf("Чтобы назначить врача пациенту введите 7\n");
+    printf("Чтобы удалить доктора введите 8\n");
+    printf("Чтобы удалить пациента введите 9\n");
+    printf("Чтобы удалить базу докторов введите 10\n");
+    printf("Чтобы удалить базу пациентов введите 11\n");
+    printf("Чтобы записать базу докторов в бинарный файл введите 12\n");
+    printf("Чтобы найти доктора в бинарном файле введите 14\n");
+    printf("Чтобы найти пациента в бинарном файле введите 15\n");
 }
 
 int main() {
-    Patient* patients = NULL;
-    Doctor* doctors = NULL;
-    int patientCount = 0;
-    int doctorCount = 0;
-
-    int choice;
-    int id, age, doctorId;
-    char name[100], spec[50];
-
-    do {
-        printMenu();
-        scanf("%d", &choice);
-        getchar();  // очистка буфера
-
-        switch (choice) {
-            case 1:  // Добавить пациента
-                printf("Enter patient ID: ");
-                scanf("%d", &id);
-                getchar();
-                printf("Enter patient name: ");
-                fgets(name, sizeof(name), stdin);
-                name[strcspn(name, "\n")] = 0;
-                printf("Enter patient age: ");
-                scanf("%d", &age);
-                printf("Enter doctor ID: ");
-                scanf("%d", &doctorId);
-
-                // Добавляем в массив
-                patients = (Patient*)realloc(
-                    patients, sizeof(Patient) * (patientCount + 1));
-                patients[patientCount].id = id;
-                strcpy(patients[patientCount].name, name);
-                patients[patientCount].age = age;
-                patients[patientCount].doctorId = doctorId;
-                patientCount++;
-
-                printf("Patient added successfully!\n");
-                break;
-
-            case 2:  // Добавить доктора
-                printf("Enter doctor ID: ");
-                scanf("%d", &id);
-                getchar();
-                printf("Enter doctor name: ");
-                fgets(name, sizeof(name), stdin);
-                name[strcspn(name, "\n")] = 0;
-                printf("Enter specialization: ");
-                fgets(spec, sizeof(spec), stdin);
-                spec[strcspn(spec, "\n")] = 0;
-
-                doctors = (Doctor*)realloc(doctors,
-                                           sizeof(Doctor) * (doctorCount + 1));
-                doctors[doctorCount].id = id;
-                strcpy(doctors[doctorCount].name, name);
-                strcpy(doctors[doctorCount].specialization, spec);
-                doctors[doctorCount].patientCount = 0;
-                doctorCount++;
-
-                printf("Doctor added successfully!\n");
-                break;
-
-            case 3:  // Показать всех пациентов
-                printf("\n=== ALL PATIENTS ===\n");
-                for (int i = 0; i < patientCount; i++) {
-                    printPatient(&patients[i]);
-                }
-                break;
-
-            case 4:  // Показать всех докторов
-                printf("\n=== ALL DOCTORS ===\n");
-                for (int i = 0; i < doctorCount; i++) {
-                    printDoctor(&doctors[i]);
-                }
-                break;
-
-            case 5:  // Сохранить в текстовые файлы
-                if (savePatientsToText("patients.txt", patients,
-                                       patientCount)) {
-                    printf("Patients saved to patients.txt\n");
-                }
-                if (saveDoctorsToText("doctors.txt", doctors, doctorCount)) {
-                    printf("Doctors saved to doctors.txt\n");
-                }
-                break;
-
-            case 6:  // Загрузить из текстовых файлов
-                if (loadPatientsFromText("patients.txt", &patients,
-                                         &patientCount)) {
-                    printf("Patients loaded from patients.txt (%d records)\n",
-                           patientCount);
-                }
-                if (loadDoctorsFromText("doctors.txt", &doctors,
-                                        &doctorCount)) {
-                    printf("Doctors loaded from doctors.txt (%d records)\n",
-                           doctorCount);
-                }
-                break;
-
-            case 7:  // Сохранить в бинарные файлы
-                if (savePatientsToBinary("patients.bin", patients,
-                                         patientCount)) {
-                    printf("Patients saved to patients.bin\n");
-                }
-                if (saveDoctorsToBinary("doctors.bin", doctors, doctorCount)) {
-                    printf("Doctors saved to doctors.bin\n");
-                }
-                break;
-
-            case 8:  // Загрузить из бинарных файлов
-                if (loadPatientsFromBinary("patients.bin", &patients,
-                                           &patientCount)) {
-                    printf("Patients loaded from patients.bin (%d records)\n",
-                           patientCount);
-                }
-                if (loadDoctorsFromBinary("doctors.bin", &doctors,
-                                          &doctorCount)) {
-                    printf("Doctors loaded from doctors.bin (%d records)\n",
-                           doctorCount);
-                }
-                break;
-
-            case 9:  // Сортировка для быстрого поиска
-                if (sortPatientsFileByDoctorId("patients.bin")) {
-                    printf("Patients file sorted by doctor ID\n");
-                }
-                if (sortDoctorsFileById("doctors.bin")) {
-                    printf("Doctors file sorted by ID\n");
-                }
-                break;
-
-            case 10:  // Поиск пациента по доктору (бинарный поиск)
-                printf("Enter doctor ID: ");
-                scanf("%d", &doctorId);
-                Patient foundPatient;
-                if (findPatientByDoctorInBinary("patients.bin", doctorId,
-                                                &foundPatient)) {
-                    printf("Found patient:\n");
-                    printPatient(&foundPatient);
-                } else {
-                    printf("No patient found for doctor ID %d\n", doctorId);
-                }
-                break;
-
-            case 11:  // Поиск доктора по пациенту
-                printf("Enter patient ID: ");
-                scanf("%d", &id);
-                Doctor foundDoctor;
-                if (findDoctorByPatientInBinary("doctors.bin", id,
-                                                &foundDoctor)) {
-                    printf("Found doctor:\n");
-                    printDoctor(&foundDoctor);
-                } else {
-                    printf("No doctor found for patient ID %d\n", id);
-                }
-                break;
-
-            case 0:
-                printf("Exiting...\n");
-                break;
-
-            default:
-                printf("Invalid choice!\n");
+    BaseoDocs *base_docs = createBaseDocs();
+    get_info_docs(base_docs);
+    BaseoPats *base_pats = createBasePats();
+    get_info_pats(base_pats);
+    while (1 == 1) {
+        interface();
+        int x;
+        printf("Введите операцию: ");
+        scanf("%d", &x);
+        if (x == 1) {
+            get_info_docs(base_docs);
+        } else if (x == 2) {
+            addDoctor(base_docs);
+        } else if (x == 3) {
+            int ID;
+            printf("Введите ID нужного доктора: ");
+            scanf("%d", &ID);
+            Doctor *a = findDoc(base_docs, ID);
+            if (a == NULL)
+                printf("Такого доктора нет в базе данных.\n");
+            else {
+                print_info_doc(a);
+            }
+        } else if (x == 4) {
+            get_info_pats(base_pats);
+        } else if (x == 5) {
+            addPatient(base_pats);
+        } else if (x == 6) {
+            int ID;
+            printf("Введите ID нужного пациента: ");
+            scanf("%d", &ID);
+            Patient *a = findPat(base_pats, ID);
+            if (a == NULL)
+                printf("Такого пациента нет в базе данных.\n");
+            else {
+                print_info_pat(a);
+            }
+        } else if (x == 7) {
+            int ID;
+            printf("Введите ID пациента, которому вы хотите назначить врача: ");
+            scanf("%d", &ID);
+            Patient *pat = findPat(base_pats, ID);
+            if (pat == NULL) {
+                printf("Такого пациента не существует\n");
+                continue;
+            }
+            printf("Введите ID нужного врача: ");
+            scanf("%d", &ID);
+            Doctor *doc = findDoc(base_docs, ID);
+            if (doc == NULL) {
+                printf("Такого врача не существует\n");
+                continue;
+            }
+            setDoctor(doc, pat);
+        } else if (x == 8) {
+            int ID;
+            printf("Введите ID доктора, которого нужно удлаить: ");
+            scanf("%d", &ID);
+            eraseDoctor(base_docs, ID);
+        } else if (x == 9) {
+            int ID;
+            printf("Введите ID пациента, которого нужно удлаить: ");
+            scanf("%d", &ID);
+            erasePatient(base_pats, ID);
+        } else if (x == 10) {
+            delete_base_of_docs(&base_docs);
+            if (base_docs == NULL)
+                printf("База докторов успешно удалена");
+        } else if (x == 11) {
+            delete_base_of_pats(&base_pats);
+            if (base_pats == NULL)
+                printf("База пациентов успешно удалена");
+        } else if (x == 12) {
+            base_docs_to_bin(base_docs);
+        } else if (x == 13) {
+            base_pats_to_bin(base_pats);
+        } else if (x == 14) {
+            int ID;
+            printf("ID доктора, которого нужно найти: ");
+            scanf("%d", &ID);
+            int index = find_doctor_pos_by_id(ID);
+            Data_Doctor doc = get_doctor_by_index(index);
+            printf("%s\n", doc.name);
+        } else if (x == 15) {
+            int ID;
+            printf("ID пациента, которого нужно найти: ");
+            scanf("%d", &ID);
+            int index = find_doctor_pos_by_id(ID);
+            Data_Patient pat = get_patient_by_index(index);
+            printf("%s\n", pat.name);
         }
-    } while (choice != 0);
-
-    // Очистка памяти
-    free(patients);
-    free(doctors);
-
-    return 0;
+    }
 }

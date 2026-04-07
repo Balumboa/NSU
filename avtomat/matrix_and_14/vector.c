@@ -1,4 +1,4 @@
-#include "/home/balumboa/AaSD/nsu_prog/avtomat/matrix_and_14/vector.h"
+#include "vector.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,11 +43,12 @@ void print_vec(vector *vec) {
     printf("\n");
 }
 
-void scan_vec(vector *vec) {
+vector *scan_vec() {
     int n;
     printf("Введите число элементов вектора: ");
     scanf("%d", &n);
-    create_vec(vec, n);
+    vector *vec;
+    vec = create_vec(n);
     printf("Введите %d чисел: ", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &vec->list[i]);
@@ -55,14 +56,18 @@ void scan_vec(vector *vec) {
     printf("Все элементы введены\n");
 }
 
-void create_vec(vector *vec, int n) {
+vector *create_vec(int n) {
+    vector *vec = (vector *)malloc(sizeof(vector));
     vec->size = n;
-    vec->capacity = n;
-    vec->list = (int *)calloc(n, sizeof(int));
+    vec->capacity = n + 10;
+    vec->list = (int *)calloc(n + 10, sizeof(int));
+    return vec;
 }
 
-void delete_vec(vector *vec) {
-    free(vec->list);
-    vec->size = 0;
-    vec->capacity = 0;
+void delete_vec(vector **vec) {
+    free((*vec)->list);
+    (*vec)->size = 0;
+    (*vec)->capacity = 0;
+    free(*vec);
+    vec = NULL;
 }

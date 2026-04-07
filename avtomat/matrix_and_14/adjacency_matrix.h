@@ -16,11 +16,11 @@ typedef struct {
     int **matrix;
 } adjacency_matrix;
 
-void create_adj_matrix(adjacency_matrix *graph, int n, int m);
+adjacency_matrix *create_adj_matrix(int n, int m);
 
-void delete_adj_matrix(adjacency_matrix *graph);
+void delete_adj_matrix(adjacency_matrix **graph);
 
-void scanf_adj_matrix(adjacency_matrix *graph);
+adjacency_matrix *scanf_adj_matrix();
 
 void print_adj_matrix(adjacency_matrix *graph);
 

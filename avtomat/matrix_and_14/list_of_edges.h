@@ -21,11 +21,11 @@ typedef struct {
     edge *edges;
 } list_of_edges;
 
-void create_list_edge(list_of_edges *graph, int n, int m);
+list_of_edges *create_list_edge(int n, int m);
 
-void delete_list_edge(list_of_edges *graph);
+void delete_list_edge(list_of_edges **graph);
 
-void scanf_list_edge(list_of_edges *graph);
+list_of_edges *scanf_list_edge();
 
 void print_list_edge(list_of_edges *graph);
 

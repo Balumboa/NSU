@@ -16,11 +16,11 @@ typedef struct {
     int **matrix;
 } incidence_matrix;
 
-void create_inc_matrix(incidence_matrix *graph, int n, int m);
+incidence_matrix *create_inc_matrix(int n, int m);
 
-void delete_inc_matrix(incidence_matrix *graph);
+void delete_inc_matrix(incidence_matrix **graph);
 
-void scanf_inc_matrix(incidence_matrix *graph);
+incidence_matrix *scanf_inc_matrix();
 
 void print_inc_matrix(incidence_matrix *graph);
 

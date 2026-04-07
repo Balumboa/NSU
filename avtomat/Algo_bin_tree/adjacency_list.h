@@ -5,17 +5,25 @@
 
 #include "vector.h"
 
+/*****************************************************************************
+ * File:         adjacemcy_list.h
+ * Description:  Список смежности
+ * Created:      31 mar 2026
+ * Author:       Ivan Arbuzov
+ *****************************************************************************/
+
 typedef struct {
-    int n;
+    int N;
+    int M;
     vector **vertex;
 } adjacency_list;
 
-void create(adjacency_list *graph, int n);
+adjacency_list *create_adj_list(int n, int m);
 
-void delete_matrix(adjacency_list *graph);
+void delete_adj_list(adjacency_list **graph);
 
-void scanf_matrix(adjacency_list *graph);
+adjacency_list *scanf_adj_list();
 
-void print_matrix(adjacency_list *graph);
+void print_adj_list(adjacency_list *graph);
 
 #endif

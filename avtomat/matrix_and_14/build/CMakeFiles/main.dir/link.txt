@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra CMakeFiles/main.dir/main.c.o CMakeFiles/main.dir/adjacency_list.c.o CMakeFiles/main.dir/vector.c.o CMakeFiles/main.dir/adjacency_matrix.c.o CMakeFiles/main.dir/incidence_matrix.c.o CMakeFiles/main.dir/list_of_edges.c.o CMakeFiles/main.dir/convert_matrixes.c.o -o main 

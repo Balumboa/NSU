@@ -13,12 +13,12 @@
  * Author:       Ivan Arbuzov
  *****************************************************************************/
 
-void convert_adj_list_to_list_edg(adjacency_list *a, list_of_edges *b);
+list_of_edges *convert_adj_list_to_list_edg(adjacency_list *a);
 
-void convert_list_edg_to_incidence_mat(list_of_edges *a, incidence_matrix *b);
+incidence_matrix *convert_list_edg_to_incidence_mat(list_of_edges *a);
 
-void convert_incidence_mat_to_adj_mat(incidence_matrix *a, adjacency_matrix *b);
+adjacency_matrix *convert_incidence_mat_to_adj_mat(incidence_matrix *a);
 
-void convert_adj_mat_to_adj_list(adjacency_matrix *a, adjacency_list *b);
+adjacency_list *convert_adj_mat_to_adj_list(adjacency_matrix *a);
 
 #endif

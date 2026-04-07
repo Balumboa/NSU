@@ -7,7 +7,9 @@
  * Author:       Ivan Arbuzov
  *****************************************************************************/
 
-void create_adj_matrix(adjacency_matrix *graph, int n, int m) {
+adjacency_matrix *create_adj_matrix(int n, int m) {
+    adjacency_matrix *graph =
+        (adjacency_matrix *)malloc(sizeof(adjacency_matrix));
     graph->N = n + 1;
     graph->M = m + 1;
 
@@ -15,22 +17,25 @@ void create_adj_matrix(adjacency_matrix *graph, int n, int m) {
     for (int i = 0; i < graph->N; i++) {
         graph->matrix[i] = (int *)calloc(graph->N, sizeof(int));
     }
+    return graph;
 }
 
-void delete_adj_matrix(adjacency_matrix *graph) {
-    int N = graph->N;
+void delete_adj_matrix(adjacency_matrix **graph) {
+    int N = (*graph)->N;
 
     for (int i = 0; i < N; i++) {
-        free(graph->matrix[i]);
+        free((*graph)->matrix[i]);
     }
 
-    free(graph->matrix);
-    graph->matrix = NULL;
-    graph->N = 0;
-    graph->M = 0;
+    free((*graph)->matrix);
+    (*graph)->matrix = NULL;
+    (*graph)->N = 0;
+    (*graph)->M = 0;
+    free(*graph);
+    graph = NULL;
 }
 
-void scanf_adj_matrix(adjacency_matrix *graph) {
+adjacency_matrix *scanf_adj_matrix() {
     int n;
     printf("Введите количество вершин в графе: ");
     scanf("%d", &n);
@@ -39,7 +44,7 @@ void scanf_adj_matrix(adjacency_matrix *graph) {
     printf("Введите количество рёбер в графе: ");
     scanf("%d", &m);
 
-    create_adj_matrix(graph, n, m);
+    adjacency_matrix *graph = create_adj_matrix(n, m);
 
     printf("Вводите рёбра между вершинами: \n");
     for (int i = 0; i < m; i++) {
@@ -47,9 +52,11 @@ void scanf_adj_matrix(adjacency_matrix *graph) {
         scanf("%d %d", &v, &w);
         graph->matrix[v][w] = 1;
     }
+    return graph;
 }
 
 void print_adj_matrix(adjacency_matrix *graph) {
+    printf("Граф в виде матрицы смежности:\n");
     int N = graph->N;
     for (int i = 1; i < N; i++) {
         for (int j = 1; j < N; j++) {

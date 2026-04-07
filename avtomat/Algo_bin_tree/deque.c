@@ -3,11 +3,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int create_deq(deque* st, int size, int capacity) {
+/*****************************************************************************
+ * File:         deque.c
+ * Description:  Список смежности
+ * Created:      31 mar 2026
+ * Author:       Ivan Arbuzov
+ *****************************************************************************/
+
+deque* create_deq(int size, int capacity) {
+    deque* st = (deque*)malloc(sizeof(deque));
     st->size = size;
     st->capacity = capacity;
     st->vertex = (int*)calloc(capacity, sizeof(int));
     st->start = 0;
+    return st;
 }
 
 int getsize_deq(deque* st) {
@@ -40,9 +49,10 @@ int pop_deq(deque* st) {
     return v;
 }
 
-void delete_deq(deque* st) {
-    st->size = 0;
-    st->capacity = 0;
-    st->start = 0;
-    free(st->vertex);
+void delete_deq(deque** st) {
+    (*st)->size = 0;
+    (*st)->capacity = 0;
+    (*st)->start = 0;
+    free((*st)->vertex);
+    free(*st);
 }

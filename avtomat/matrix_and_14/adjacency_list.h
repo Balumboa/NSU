@@ -20,9 +20,9 @@ typedef struct {
 
 adjacency_list *create_adj_list(int n, int m);
 
-void delete_adj_list(adjacency_list *graph);
+void delete_adj_list(adjacency_list **graph);
 
-void scanf_adj_list(adjacency_list *graph);
+adjacency_list *scanf_adj_list();
 
 void print_adj_list(adjacency_list *graph);
 
