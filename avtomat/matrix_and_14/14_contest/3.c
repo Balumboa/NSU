@@ -15,24 +15,40 @@ typedef struct {
     int n;
 } graph;
 
-void create(graph *graph, int n) {
-    graph->list = (vert **)malloc(n * sizeof(vert *));
+graph *create(int n);
+
+void push_back(graph *graph, int x, int y, int z);
+
+graph *scan(int n);
+
+int min(int *vertex, int *used, int n);
+
+void update(graph *graph, int *vertex, int v, int N);
+
+void solve(int *vertex, int finish);
+
+void dijkstra_and_solve(graph *graph, int start, int finish, int n);
+
+void delete_graph(graph **free_graph);
+
+graph *create(int n) {
+    graph *gp = (graph *)malloc(sizeof(graph));
+    gp->n = n;
+    gp->list = (vert **)malloc(n * sizeof(vert *));
+    gp->sizes = (int *)calloc(n, sizeof(int));
+    gp->capacities = (int *)calloc(n, sizeof(int));
     for (int i = 0; i < n; i++) {
-        graph->list[i] = (vert *)malloc(1 * sizeof(vert));
+        gp->list[i] = (vert *)malloc(10 * sizeof(vert));
+        gp->capacities[i] = 10;
     }
-    graph->sizes = (int *)calloc(n, sizeof(int));
-    graph->capacities = (int *)calloc(n, sizeof(int));
+    return gp;
 }
 
 void push_back(graph *graph, int x, int y, int z) {
-    if (graph->capacities[x] == 0) {
-        graph->capacities[x] = 10;
-        graph->list[x] = (vert *)malloc(sizeof(vert) * 10);
-    }
     if (graph->capacities[x] == graph->sizes[x]) {
         graph->list[x] = (vert *)realloc(
-            graph->list[x], (2 * graph->capacities[x] + 1) * sizeof(vert));
-        graph->capacities[x] = 2 * graph->capacities[x] + 1;
+            graph->list[x], (2 * graph->capacities[x]) * sizeof(vert));
+        graph->capacities[x] = 2 * graph->capacities[x];
     }
     vert newvert;
     newvert.to = y;
@@ -41,16 +57,18 @@ void push_back(graph *graph, int x, int y, int z) {
     graph->sizes[x]++;
 }
 
-void scan(graph *graph) {
+graph *scan(int n) {
+    graph *gp = create(n + 1);
     int x, y, z;
     while (scanf("%d %d %d", &x, &y, &z) == 3) {
-        push_back(graph, x, y, z);
-        push_back(graph, y, x, z);
+        push_back(gp, x, y, z);
+        push_back(gp, y, x, z);
         // int contin;
         // scanf("%d", &contin);
         // if (contin)
         //     break;
     }
+    return gp;
 }
 
 int min(int *vertex, int *used, int n) {
@@ -108,25 +126,16 @@ void dijkstra_and_solve(graph *graph, int start, int finish, int n) {
     free(used);
 }
 
-void delete_graph(graph *graph) {
-    for (int i = 0; i < graph->n; i++) {
-        free(graph->list[i]);
+void delete_graph(graph **free_graph) {
+    for (int i = 0; i < (*free_graph)->n; i++) {
+        free((*free_graph)->list[i]);
     }
-    free(graph->list);
-    free(graph->sizes);
-    free(graph->capacities);
+    free((*free_graph)->list);
+    free((*free_graph)->sizes);
+    free((*free_graph)->capacities);
+    free(*free_graph);
+    *free_graph = NULL;
 }
-
-// void print(graph *graph, int n) {
-//     for (int i = 1; i < n; i++) {
-//         printf("%d: ", i);
-//         for (int j = 0; j < graph->sizes[i]; j++) {
-//             printf("%d ", graph->list[i][j].to);
-//         }
-//         printf("\n");
-//     }
-//     printf("\n");
-// }
 
 int main() {
     freopen("input.txt", "r", stdin);
@@ -136,11 +145,8 @@ int main() {
     n++;
     int start, finish;
     scanf("%d %d", &start, &finish);
-    graph graph;
-    create(&graph, n);
-    scan(&graph);
-    // print(&graph, n);
-    dijkstra_and_solve(&graph, start, finish, n);
-
+    graph *graph;
+    graph = scan(n);
+    dijkstra_and_solve(graph, start, finish, n);
     delete_graph(&graph);
 }
