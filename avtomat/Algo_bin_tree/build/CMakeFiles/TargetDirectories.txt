@@ -1,3 +1,4 @@
 /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles/main.dir
+/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles/test.dir
 /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles/edit_cache.dir
 /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles/rebuild_cache.dir

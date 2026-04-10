@@ -2,10 +2,9 @@
 
 #include <stdio.h>
 
-#include "adjacency_list.h"
-#include "deque.h"
-#include "stack.h"
-#include "vector.h"
+#include "queue.h"
+#include "steck.h"
+#include "tree.h"
 
 /*****************************************************************************
  * File:         Algorithms.c
@@ -14,58 +13,38 @@
  * Author:       Ivan Arbuzov
  *****************************************************************************/
 
-void bfs(adjacency_list *graph) {
-    vector *is_used;
-    is_used = create_vec(graph->N + 10);
-    printf("Обход бфс:\n");
-    for (int j = 1; j < graph->N; j++) {
-        if (is_used->list[j] == 0) {
-            deque *deq;
-            deq = create_deq(0, 10);
-            push_deq(deq, j);
-            is_used->list[j] = 1;
-            while (getsize_deq(deq)) {
-                int v = pop_deq(deq);
-                printf("%d\n", v);
-                vector *neighbors = graph->vertex[v];
-                for (int i = 0; i < get_size_vec(neighbors); i++) {
-                    int w = graph->vertex[v]->list[i];
-                    if (is_used->list[w] == 0) {
-                        push_deq(deq, w);
-                        is_used->list[w] = 1;
-                    }
-                }
+void dfs(tree* tr) {
+    steck* st = NULL;
+    if (tr != NULL) {
+        st = add_to_steck(st, tr);
+        while (st != NULL) {
+            if (st->key != NULL) {
+                tree* now_tree = st->key;
+                int x = now_tree->key;
+                printf("%d ", x);
+                st = erase_from_steck(st);
+                st = add_to_steck(st, now_tree->right);
+                st = add_to_steck(st, now_tree->left);
+            } else {
+                st = erase_from_steck(st);
             }
-            delete_deq(&deq);
         }
     }
-    delete_vec(&is_used);
 }
 
-void dfs(adjacency_list *graph) {
-    vector *is_used;
-    is_used = create_vec(graph->N);
-    printf("Обход дфс\n");
-    for (int j = 1; j < graph->N; j++) {
-        if (is_used->list[j] == 0) {
-            stack *st;
-            st = create_steck(0, 0);
-            push_back(st, j);
-            is_used->list[j] = 1;
-            while (getsize(st) > 0) {
-                int v = pop_back(st);
-                printf("%d\n", v);
-                vector *neighbors = graph->vertex[v];
-                for (int i = 0; i < get_size_vec(neighbors); i++) {
-                    int w = graph->vertex[v]->list[i];
-                    if (is_used->list[w] == 0) {
-                        push_back(st, w);
-                        is_used->list[w] = 1;
-                    }
-                }
-            }
-            delete_steck(&st);
+void bfs(tree* tr) {
+    queue* que = create_queue();
+    if (tr != NULL) {
+        add_to_queue(que, tr);
+        while (que->start != NULL) {
+            tree* now_tree = que->start->key;
+            int x = now_tree->key;
+            printf("%d ", x);
+            erase_from_queue(que);
+            if (now_tree->left != NULL)
+                add_to_queue(que, now_tree->left);
+            if (now_tree->right != NULL)
+                add_to_queue(que, now_tree->right);
         }
     }
-    delete_vec(&is_used);
 }

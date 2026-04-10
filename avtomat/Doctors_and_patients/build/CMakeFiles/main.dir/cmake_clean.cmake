@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/str.c.o.d"
   "CMakeFiles/main.dir/to_bin.c.o"
   "CMakeFiles/main.dir/to_bin.c.o.d"
+  "CMakeFiles/main.dir/to_txt.c.o"
+  "CMakeFiles/main.dir/to_txt.c.o.d"
   "main"
   "main.pdb"
 )

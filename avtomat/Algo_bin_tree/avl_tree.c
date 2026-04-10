@@ -107,10 +107,26 @@ Node *erase(Node *a, int key) {
 }
 
 void delete_avl_tree(Node **a) {
-    if (a == NULL)
+    if (*a == NULL)
         return;
 
-    delete_avl_tree((*a)->left);
-    delete_avl_tree((*a)->right);
+    delete_avl_tree(&(*a)->left);
+    delete_avl_tree(&(*a)->right);
     free(*a);
+    *a = NULL;
+}
+
+void print_avl_tree(Node *a, int space) {
+    if (a == NULL) {
+        return;
+    }
+
+    print_avl_tree(a->right, space + 10);
+    printf("\n");
+    for (int i = 0; i < space; i++) {
+        printf(" ");
+    }
+    printf("%d", a->key);
+    printf("\n");
+    print_avl_tree(a->left, space + 10);
 }

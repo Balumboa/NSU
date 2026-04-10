@@ -57,14 +57,16 @@ void print_info_doc(Doctor *doc) {
 }
 
 void addPatient_to_doc(Doctor *doc, Patient *pat) {
-    if (doc->count == doc->capacity) {
-        doc->capacity = 2 * doc->capacity + 1;
-        doc->patients = (Patient **)realloc(doc->patients,
-                                            doc->capacity * sizeof(Patient *));
+    if (pat->doc != doc) {
+        if (doc->count == doc->capacity) {
+            doc->capacity = 2 * doc->capacity + 1;
+            doc->patients = (Patient **)realloc(
+                doc->patients, doc->capacity * sizeof(Patient *));
+        }
+        doc->patients[doc->count] = pat;
+        doc->count++;
+        pat->doc = doc;
     }
-    doc->patients[doc->count] = pat;
-    doc->count++;
-    pat->doc = doc;
 }
 
 void erasePatient_from_doc(Doctor *doc, Patient *pat) {
@@ -76,6 +78,8 @@ void erasePatient_from_doc(Doctor *doc, Patient *pat) {
                 doc->patients[i + 1] = c;
             }
         }
+        if (doc->patients[doc->count - 1]->ID == pat->ID) {
+            doc->count--;
+        }
     }
-    doc->count--;
 }

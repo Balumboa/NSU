@@ -32,7 +32,7 @@ void delete_adj_matrix(adjacency_matrix **graph) {
     (*graph)->N = 0;
     (*graph)->M = 0;
     free(*graph);
-    graph = NULL;
+    *graph = NULL;
 }
 
 adjacency_matrix *scanf_adj_matrix() {

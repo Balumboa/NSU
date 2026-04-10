@@ -35,4 +35,6 @@ Node *erase(Node *a, int key);
 
 void delete_avl_tree(Node **a);
 
+void print_avl_tree(Node *a, int space);
+
 #endif

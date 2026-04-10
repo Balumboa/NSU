@@ -6,13 +6,14 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
 
-set(comp
+set(test
     main.c
     Doctor.c
     Patient.c
     Base.c
     str.c
     to_bin.c
+    to_txt.c
 )
 
-add_executable(main ${comp})
+add_executable(main ${test})

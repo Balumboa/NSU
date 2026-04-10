@@ -1,24 +1,29 @@
 cmake_minimum_required(VERSION 3.10)
 project(GraphMatrix)
 
-# Явно указываем, что это C (не C++)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
-
-# Основные флаги компиляции (с предупреждениями)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
 
-set(PIZDA
+set(SOURCES
     main.c
     Algorithms.c
-    stack.c
-    deque.c
-    adjacency_list.c
-    vector.c
+    steck.c
+    queue.c
+    tree.c
     avl_tree.c
 )
 
-# Отдельно собираем тесты (если нужно)
-add_executable(main 
-    ${PIZDA}
+set(test_avl_tree_resources
+    test_avl_tree.c
+    Algorithms.c
+    steck.c
+    queue.c
+    tree.c
+    avl_tree.c
 )
+
+# Тестовая программа
+add_executable(main ${SOURCES})
+
+add_executable(test ${test_avl_tree_resources})

@@ -273,6 +273,30 @@ to_bin.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/to_bin.c.s
 .PHONY : to_bin.c.s
 
+to_txt.o: to_txt.c.o
+.PHONY : to_txt.o
+
+# target to build an object file
+to_txt.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/to_txt.c.o
+.PHONY : to_txt.c.o
+
+to_txt.i: to_txt.c.i
+.PHONY : to_txt.i
+
+# target to preprocess a source file
+to_txt.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/to_txt.c.i
+.PHONY : to_txt.c.i
+
+to_txt.s: to_txt.c.s
+.PHONY : to_txt.s
+
+# target to generate assembly for a file
+to_txt.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/to_txt.c.s
+.PHONY : to_txt.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -300,6 +324,9 @@ help:
 	@echo "... to_bin.o"
 	@echo "... to_bin.i"
 	@echo "... to_bin.s"
+	@echo "... to_txt.o"
+	@echo "... to_txt.i"
+	@echo "... to_txt.s"
 .PHONY : help
 
 

@@ -3,10 +3,9 @@
 
 #include <stdio.h>
 
-#include "adjacency_list.h"
-#include "deque.h"
-#include "stack.h"
-#include "vector.h"
+#include "queue.h"
+#include "steck.h"
+#include "tree.h"
 
 /*****************************************************************************
  * File:         Algorithms.h
@@ -15,8 +14,8 @@
  * Author:       Ivan Arbuzov
  *****************************************************************************/
 
-void bfs(adjacency_list *graph);
+void dfs(tree* tree);
 
-void dfs(adjacency_list *graph);
+void bfs(tree* tree);
 
 #endif

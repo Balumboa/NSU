@@ -54,6 +54,7 @@ vector *scan_vec() {
         scanf("%d", &vec->list[i]);
     }
     printf("Все элементы введены\n");
+    return vec;
 }
 
 vector *create_vec(int n) {
@@ -69,5 +70,5 @@ void delete_vec(vector **vec) {
     (*vec)->size = 0;
     (*vec)->capacity = 0;
     free(*vec);
-    vec = NULL;
+    *vec = NULL;
 }

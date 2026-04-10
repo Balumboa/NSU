@@ -1,1 +1,1 @@
-/usr/bin/cc  -Wall -Wextra CMakeFiles/main.dir/main.c.o CMakeFiles/main.dir/Doctor.c.o CMakeFiles/main.dir/Patient.c.o CMakeFiles/main.dir/Base.c.o CMakeFiles/main.dir/str.c.o CMakeFiles/main.dir/to_bin.c.o -o main 
+/usr/bin/cc  -Wall -Wextra CMakeFiles/main.dir/main.c.o CMakeFiles/main.dir/Doctor.c.o CMakeFiles/main.dir/Patient.c.o CMakeFiles/main.dir/Base.c.o CMakeFiles/main.dir/str.c.o CMakeFiles/main.dir/to_bin.c.o CMakeFiles/main.dir/to_txt.c.o -o main 

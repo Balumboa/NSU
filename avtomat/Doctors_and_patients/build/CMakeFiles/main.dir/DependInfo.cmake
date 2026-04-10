@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/balumboa/AaSD/NSU/avtomat/Doctors_and_patients/main.c" "CMakeFiles/main.dir/main.c.o" "gcc" "CMakeFiles/main.dir/main.c.o.d"
   "/home/balumboa/AaSD/NSU/avtomat/Doctors_and_patients/str.c" "CMakeFiles/main.dir/str.c.o" "gcc" "CMakeFiles/main.dir/str.c.o.d"
   "/home/balumboa/AaSD/NSU/avtomat/Doctors_and_patients/to_bin.c" "CMakeFiles/main.dir/to_bin.c.o" "gcc" "CMakeFiles/main.dir/to_bin.c.o.d"
+  "/home/balumboa/AaSD/NSU/avtomat/Doctors_and_patients/to_txt.c" "CMakeFiles/main.dir/to_txt.c.o" "gcc" "CMakeFiles/main.dir/to_txt.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

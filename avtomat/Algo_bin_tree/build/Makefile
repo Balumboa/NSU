@@ -129,12 +129,26 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+#=============================================================================
+# Target rules for targets named test
+
+# Build rule for target.
+test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
+.PHONY : test/fast
+
 Algorithms.o: Algorithms.c.o
 .PHONY : Algorithms.o
 
 # target to build an object file
 Algorithms.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Algorithms.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Algorithms.c.o
 .PHONY : Algorithms.c.o
 
 Algorithms.i: Algorithms.c.i
@@ -143,6 +157,7 @@ Algorithms.i: Algorithms.c.i
 # target to preprocess a source file
 Algorithms.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Algorithms.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Algorithms.c.i
 .PHONY : Algorithms.c.i
 
 Algorithms.s: Algorithms.c.s
@@ -151,31 +166,8 @@ Algorithms.s: Algorithms.c.s
 # target to generate assembly for a file
 Algorithms.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Algorithms.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Algorithms.c.s
 .PHONY : Algorithms.c.s
-
-adjacency_list.o: adjacency_list.c.o
-.PHONY : adjacency_list.o
-
-# target to build an object file
-adjacency_list.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/adjacency_list.c.o
-.PHONY : adjacency_list.c.o
-
-adjacency_list.i: adjacency_list.c.i
-.PHONY : adjacency_list.i
-
-# target to preprocess a source file
-adjacency_list.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/adjacency_list.c.i
-.PHONY : adjacency_list.c.i
-
-adjacency_list.s: adjacency_list.c.s
-.PHONY : adjacency_list.s
-
-# target to generate assembly for a file
-adjacency_list.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/adjacency_list.c.s
-.PHONY : adjacency_list.c.s
 
 avl_tree.o: avl_tree.c.o
 .PHONY : avl_tree.o
@@ -183,6 +175,7 @@ avl_tree.o: avl_tree.c.o
 # target to build an object file
 avl_tree.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/avl_tree.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/avl_tree.c.o
 .PHONY : avl_tree.c.o
 
 avl_tree.i: avl_tree.c.i
@@ -191,6 +184,7 @@ avl_tree.i: avl_tree.c.i
 # target to preprocess a source file
 avl_tree.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/avl_tree.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/avl_tree.c.i
 .PHONY : avl_tree.c.i
 
 avl_tree.s: avl_tree.c.s
@@ -199,31 +193,8 @@ avl_tree.s: avl_tree.c.s
 # target to generate assembly for a file
 avl_tree.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/avl_tree.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/avl_tree.c.s
 .PHONY : avl_tree.c.s
-
-deque.o: deque.c.o
-.PHONY : deque.o
-
-# target to build an object file
-deque.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/deque.c.o
-.PHONY : deque.c.o
-
-deque.i: deque.c.i
-.PHONY : deque.i
-
-# target to preprocess a source file
-deque.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/deque.c.i
-.PHONY : deque.c.i
-
-deque.s: deque.c.s
-.PHONY : deque.s
-
-# target to generate assembly for a file
-deque.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/deque.c.s
-.PHONY : deque.c.s
 
 main.o: main.c.o
 .PHONY : main.o
@@ -249,53 +220,110 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.c.s
 .PHONY : main.c.s
 
-stack.o: stack.c.o
-.PHONY : stack.o
+queue.o: queue.c.o
+.PHONY : queue.o
 
 # target to build an object file
-stack.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/stack.c.o
-.PHONY : stack.c.o
+queue.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/queue.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/queue.c.o
+.PHONY : queue.c.o
 
-stack.i: stack.c.i
-.PHONY : stack.i
+queue.i: queue.c.i
+.PHONY : queue.i
 
 # target to preprocess a source file
-stack.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/stack.c.i
-.PHONY : stack.c.i
+queue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/queue.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/queue.c.i
+.PHONY : queue.c.i
 
-stack.s: stack.c.s
-.PHONY : stack.s
+queue.s: queue.c.s
+.PHONY : queue.s
 
 # target to generate assembly for a file
-stack.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/stack.c.s
-.PHONY : stack.c.s
+queue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/queue.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/queue.c.s
+.PHONY : queue.c.s
 
-vector.o: vector.c.o
-.PHONY : vector.o
+steck.o: steck.c.o
+.PHONY : steck.o
 
 # target to build an object file
-vector.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/vector.c.o
-.PHONY : vector.c.o
+steck.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/steck.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/steck.c.o
+.PHONY : steck.c.o
 
-vector.i: vector.c.i
-.PHONY : vector.i
+steck.i: steck.c.i
+.PHONY : steck.i
 
 # target to preprocess a source file
-vector.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/vector.c.i
-.PHONY : vector.c.i
+steck.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/steck.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/steck.c.i
+.PHONY : steck.c.i
 
-vector.s: vector.c.s
-.PHONY : vector.s
+steck.s: steck.c.s
+.PHONY : steck.s
 
 # target to generate assembly for a file
-vector.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/vector.c.s
-.PHONY : vector.c.s
+steck.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/steck.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/steck.c.s
+.PHONY : steck.c.s
+
+test_avl_tree.o: test_avl_tree.c.o
+.PHONY : test_avl_tree.o
+
+# target to build an object file
+test_avl_tree.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test_avl_tree.c.o
+.PHONY : test_avl_tree.c.o
+
+test_avl_tree.i: test_avl_tree.c.i
+.PHONY : test_avl_tree.i
+
+# target to preprocess a source file
+test_avl_tree.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test_avl_tree.c.i
+.PHONY : test_avl_tree.c.i
+
+test_avl_tree.s: test_avl_tree.c.s
+.PHONY : test_avl_tree.s
+
+# target to generate assembly for a file
+test_avl_tree.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test_avl_tree.c.s
+.PHONY : test_avl_tree.c.s
+
+tree.o: tree.c.o
+.PHONY : tree.o
+
+# target to build an object file
+tree.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/tree.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tree.c.o
+.PHONY : tree.c.o
+
+tree.i: tree.c.i
+.PHONY : tree.i
+
+# target to preprocess a source file
+tree.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/tree.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tree.c.i
+.PHONY : tree.c.i
+
+tree.s: tree.c.s
+.PHONY : tree.s
+
+# target to generate assembly for a file
+tree.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/tree.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tree.c.s
+.PHONY : tree.c.s
 
 # Help Target
 help:
@@ -306,27 +334,28 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... test"
 	@echo "... Algorithms.o"
 	@echo "... Algorithms.i"
 	@echo "... Algorithms.s"
-	@echo "... adjacency_list.o"
-	@echo "... adjacency_list.i"
-	@echo "... adjacency_list.s"
 	@echo "... avl_tree.o"
 	@echo "... avl_tree.i"
 	@echo "... avl_tree.s"
-	@echo "... deque.o"
-	@echo "... deque.i"
-	@echo "... deque.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... stack.o"
-	@echo "... stack.i"
-	@echo "... stack.s"
-	@echo "... vector.o"
-	@echo "... vector.i"
-	@echo "... vector.s"
+	@echo "... queue.o"
+	@echo "... queue.i"
+	@echo "... queue.s"
+	@echo "... steck.o"
+	@echo "... steck.i"
+	@echo "... steck.s"
+	@echo "... test_avl_tree.o"
+	@echo "... test_avl_tree.i"
+	@echo "... test_avl_tree.s"
+	@echo "... tree.o"
+	@echo "... tree.i"
+	@echo "... tree.s"
 .PHONY : help
 
 

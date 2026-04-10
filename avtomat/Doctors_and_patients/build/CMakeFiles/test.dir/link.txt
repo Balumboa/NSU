@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra CMakeFiles/test.dir/main.c.o CMakeFiles/test.dir/Doctor.c.o CMakeFiles/test.dir/Patient.c.o CMakeFiles/test.dir/Base.c.o CMakeFiles/test.dir/str.c.o CMakeFiles/test.dir/to_bin.c.o CMakeFiles/test.dir/to_txt.c.o -o test 

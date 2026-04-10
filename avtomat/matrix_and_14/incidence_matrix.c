@@ -31,7 +31,7 @@ void delete_inc_matrix(incidence_matrix **graph) {
     (*graph)->N = 0;
     (*graph)->M = 0;
     free(*graph);
-    graph = NULL;
+    *graph = NULL;
 }
 
 incidence_matrix *scanf_inc_matrix() {

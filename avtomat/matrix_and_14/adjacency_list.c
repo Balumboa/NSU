@@ -37,7 +37,7 @@ void delete_adj_list(adjacency_list **graph) {
     (*graph)->N = 0;
     (*graph)->M = 0;
     free(*graph);
-    graph = NULL;
+    *graph = NULL;
 }
 
 void print_adj_list(adjacency_list *graph) {

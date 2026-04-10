@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wextra CMakeFiles/test.dir/test_avl_tree.c.o CMakeFiles/test.dir/Algorithms.c.o CMakeFiles/test.dir/steck.c.o CMakeFiles/test.dir/queue.c.o CMakeFiles/test.dir/tree.c.o CMakeFiles/test.dir/avl_tree.c.o -o test 

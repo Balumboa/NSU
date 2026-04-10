@@ -23,7 +23,7 @@ void delete_list_edge(list_of_edges **graph) {
     (*graph)->M = 0;
     (*graph)->N = 0;
     free(*graph);
-    graph = NULL;
+    *graph = NULL;
 }
 
 list_of_edges *scanf_list_edge() {

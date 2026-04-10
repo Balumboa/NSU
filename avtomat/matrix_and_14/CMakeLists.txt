@@ -8,7 +8,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 # Основные флаги компиляции (с предупреждениями)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
 
-set(PIZDA
+set(PIZZA
     main.c
     adjacency_list.c 
     vector.c
@@ -20,5 +20,5 @@ set(PIZDA
 
 # Отдельно собираем тесты (если нужно)
 add_executable(main 
-    ${PIZDA}
+    ${PIZZA}
 )

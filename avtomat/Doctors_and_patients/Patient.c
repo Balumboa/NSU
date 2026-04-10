@@ -23,6 +23,9 @@ Patient *create_pat() {
 }
 
 void delete_pat(Patient **pat) {
+    if ((*pat)->doc != NULL) {
+        erasePatient_from_doc((*pat)->doc, *pat);
+    }
     free((*pat)->name);
     free((*pat)->text);
     free(*pat);
@@ -41,5 +44,11 @@ void print_info_pat(Patient *pat) {
 }
 
 void setDoctor(Doctor *doc, Patient *pat) {
+    if (doc == NULL) {
+        pat->doc = doc;
+        return;
+    } else if (pat->doc != NULL) {
+        erasePatient_from_doc(pat->doc, pat);
+    }
     addPatient_to_doc(doc, pat);
 }

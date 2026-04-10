@@ -97,66 +97,52 @@ CMakeFiles/main.dir/Algorithms.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/Algorithms.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/Algorithms.c -o CMakeFiles/main.dir/Algorithms.c.s
 
-CMakeFiles/main.dir/stack.c.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/stack.c.o: /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/stack.c
-CMakeFiles/main.dir/stack.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/stack.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/stack.c.o -MF CMakeFiles/main.dir/stack.c.o.d -o CMakeFiles/main.dir/stack.c.o -c /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/stack.c
+CMakeFiles/main.dir/steck.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/steck.c.o: /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/steck.c
+CMakeFiles/main.dir/steck.c.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/steck.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/steck.c.o -MF CMakeFiles/main.dir/steck.c.o.d -o CMakeFiles/main.dir/steck.c.o -c /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/steck.c
 
-CMakeFiles/main.dir/stack.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/stack.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/stack.c > CMakeFiles/main.dir/stack.c.i
+CMakeFiles/main.dir/steck.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/steck.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/steck.c > CMakeFiles/main.dir/steck.c.i
 
-CMakeFiles/main.dir/stack.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/stack.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/stack.c -o CMakeFiles/main.dir/stack.c.s
+CMakeFiles/main.dir/steck.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/steck.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/steck.c -o CMakeFiles/main.dir/steck.c.s
 
-CMakeFiles/main.dir/deque.c.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/deque.c.o: /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/deque.c
-CMakeFiles/main.dir/deque.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/deque.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/deque.c.o -MF CMakeFiles/main.dir/deque.c.o.d -o CMakeFiles/main.dir/deque.c.o -c /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/deque.c
+CMakeFiles/main.dir/queue.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/queue.c.o: /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/queue.c
+CMakeFiles/main.dir/queue.c.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/queue.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/queue.c.o -MF CMakeFiles/main.dir/queue.c.o.d -o CMakeFiles/main.dir/queue.c.o -c /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/queue.c
 
-CMakeFiles/main.dir/deque.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/deque.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/deque.c > CMakeFiles/main.dir/deque.c.i
+CMakeFiles/main.dir/queue.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/queue.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/queue.c > CMakeFiles/main.dir/queue.c.i
 
-CMakeFiles/main.dir/deque.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/deque.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/deque.c -o CMakeFiles/main.dir/deque.c.s
+CMakeFiles/main.dir/queue.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/queue.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/queue.c -o CMakeFiles/main.dir/queue.c.s
 
-CMakeFiles/main.dir/adjacency_list.c.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/adjacency_list.c.o: /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/adjacency_list.c
-CMakeFiles/main.dir/adjacency_list.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/main.dir/adjacency_list.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/adjacency_list.c.o -MF CMakeFiles/main.dir/adjacency_list.c.o.d -o CMakeFiles/main.dir/adjacency_list.c.o -c /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/adjacency_list.c
+CMakeFiles/main.dir/tree.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/tree.c.o: /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/tree.c
+CMakeFiles/main.dir/tree.c.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/main.dir/tree.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/tree.c.o -MF CMakeFiles/main.dir/tree.c.o.d -o CMakeFiles/main.dir/tree.c.o -c /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/tree.c
 
-CMakeFiles/main.dir/adjacency_list.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/adjacency_list.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/adjacency_list.c > CMakeFiles/main.dir/adjacency_list.c.i
+CMakeFiles/main.dir/tree.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/tree.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/tree.c > CMakeFiles/main.dir/tree.c.i
 
-CMakeFiles/main.dir/adjacency_list.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/adjacency_list.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/adjacency_list.c -o CMakeFiles/main.dir/adjacency_list.c.s
-
-CMakeFiles/main.dir/vector.c.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/vector.c.o: /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/vector.c
-CMakeFiles/main.dir/vector.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/main.dir/vector.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/vector.c.o -MF CMakeFiles/main.dir/vector.c.o.d -o CMakeFiles/main.dir/vector.c.o -c /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/vector.c
-
-CMakeFiles/main.dir/vector.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/vector.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/vector.c > CMakeFiles/main.dir/vector.c.i
-
-CMakeFiles/main.dir/vector.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/vector.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/vector.c -o CMakeFiles/main.dir/vector.c.s
+CMakeFiles/main.dir/tree.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/tree.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/tree.c -o CMakeFiles/main.dir/tree.c.s
 
 CMakeFiles/main.dir/avl_tree.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/avl_tree.c.o: /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/avl_tree.c
 CMakeFiles/main.dir/avl_tree.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/main.dir/avl_tree.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/main.dir/avl_tree.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/avl_tree.c.o -MF CMakeFiles/main.dir/avl_tree.c.o.d -o CMakeFiles/main.dir/avl_tree.c.o -c /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/avl_tree.c
 
 CMakeFiles/main.dir/avl_tree.c.i: cmake_force
@@ -171,10 +157,9 @@ CMakeFiles/main.dir/avl_tree.c.s: cmake_force
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.c.o" \
 "CMakeFiles/main.dir/Algorithms.c.o" \
-"CMakeFiles/main.dir/stack.c.o" \
-"CMakeFiles/main.dir/deque.c.o" \
-"CMakeFiles/main.dir/adjacency_list.c.o" \
-"CMakeFiles/main.dir/vector.c.o" \
+"CMakeFiles/main.dir/steck.c.o" \
+"CMakeFiles/main.dir/queue.c.o" \
+"CMakeFiles/main.dir/tree.c.o" \
 "CMakeFiles/main.dir/avl_tree.c.o"
 
 # External object files for target main
@@ -182,14 +167,13 @@ main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.c.o
 main: CMakeFiles/main.dir/Algorithms.c.o
-main: CMakeFiles/main.dir/stack.c.o
-main: CMakeFiles/main.dir/deque.c.o
-main: CMakeFiles/main.dir/adjacency_list.c.o
-main: CMakeFiles/main.dir/vector.c.o
+main: CMakeFiles/main.dir/steck.c.o
+main: CMakeFiles/main.dir/queue.c.o
+main: CMakeFiles/main.dir/tree.c.o
 main: CMakeFiles/main.dir/avl_tree.c.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

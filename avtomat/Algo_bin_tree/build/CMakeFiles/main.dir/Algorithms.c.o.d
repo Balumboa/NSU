@@ -26,7 +26,7 @@ CMakeFiles/main.dir/Algorithms.c.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/adjacency_list.h \
+ /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/queue.h \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
@@ -52,6 +52,5 @@ CMakeFiles/main.dir/Algorithms.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/vector.h \
- /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/deque.h \
- /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/stack.h
+ /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/tree.h \
+ /home/balumboa/AaSD/NSU/avtomat/Algo_bin_tree/steck.h

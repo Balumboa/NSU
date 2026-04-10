@@ -1,1 +1,1 @@
-/usr/bin/cc  -Wall -Wextra CMakeFiles/main.dir/main.c.o CMakeFiles/main.dir/Algorithms.c.o CMakeFiles/main.dir/stack.c.o CMakeFiles/main.dir/deque.c.o CMakeFiles/main.dir/adjacency_list.c.o CMakeFiles/main.dir/vector.c.o CMakeFiles/main.dir/avl_tree.c.o -o main 
+/usr/bin/cc  -Wall -Wextra CMakeFiles/main.dir/main.c.o CMakeFiles/main.dir/Algorithms.c.o CMakeFiles/main.dir/steck.c.o CMakeFiles/main.dir/queue.c.o CMakeFiles/main.dir/tree.c.o CMakeFiles/main.dir/avl_tree.c.o -o main 
