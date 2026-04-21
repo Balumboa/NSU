@@ -39,6 +39,7 @@ void delete_doc(Doctor **doc) {
     }
     free((*doc)->patients);
     free(*doc);
+    *doc = NULL;
 }
 
 void print_info_doc(Doctor *doc) {

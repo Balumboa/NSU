@@ -29,6 +29,7 @@ void delete_pat(Patient **pat) {
     free((*pat)->name);
     free((*pat)->text);
     free(*pat);
+    *pat = NULL;
 }
 
 void print_info_pat(Patient *pat) {

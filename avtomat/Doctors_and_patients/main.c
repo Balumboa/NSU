@@ -70,7 +70,6 @@ void test_basic_functionality(void) {
 
     // 4. ПРОВЕРКА СВЯЗЕЙ
     printf("=== 4. ПРОВЕРКА СВЯЗЕЙ ===\n");
-    int ok = 1;
     for (int i = 0; i < pats->count; i++) {
         Patient *p = pats->patients[i];
         if (p->doc) {
@@ -403,7 +402,139 @@ void test_large_data(void) {
     printf("\n========== ТЕСТ 3 ЗАВЕРШЁН ==========\n");
 }
 
-// ==================== ОСНОВНАЯ ФУНКЦИЯ ====================
+// ==================== ТЕСТ 4: ЧТЕНИЕ ИЗ ФАЙЛОВ ====================
+void test_file_io(void) {
+    printf(
+        "\n========== ТЕСТ 4: ЧТЕНИЕ ИЗ ТЕКСТОВОГО И БИНАРНОГО ФАЙЛОВ "
+        "==========\n\n");
+
+    // ----- 1. СОЗДАНИЕ ТЕСТОВЫХ ДАННЫХ -----
+    BaseoDocs *docs = createBaseDocs();
+    BaseoPats *pats = createBasePats();
+
+    // Создаём 3 докторов
+    for (int i = 1; i <= 3; i++) {
+        Doctor *doc = (Doctor *)malloc(sizeof(Doctor));
+        doc->ID = i;
+        doc->name = (char *)malloc(30);
+        sprintf(doc->name, "Doctor_%d", i);
+        doc->text = (char *)malloc(100);
+        sprintf(doc->text, "Specialization_%d", i);
+        doc->count = 0;
+        doc->capacity = 10;
+        doc->patients = (Patient **)calloc(10, sizeof(Patient *));
+        docs->doctors[docs->count++] = doc;
+    }
+
+    // Создаём 5 пациентов
+    for (int i = 1; i <= 5; i++) {
+        Patient *pat = (Patient *)malloc(sizeof(Patient));
+        pat->ID = i;
+        pat->name = (char *)malloc(30);
+        sprintf(pat->name, "Patient_%d", i);
+        pat->text = (char *)malloc(100);
+        sprintf(pat->text, "Complaint_%d", i);
+        pat->doc = NULL;
+        pats->patients[pats->count++] = pat;
+    }
+
+    // Назначаем врачей
+    addPatient_to_doc(docs->doctors[0],
+                      pats->patients[0]);  // Patient1 -> Doctor1
+    addPatient_to_doc(docs->doctors[0],
+                      pats->patients[1]);  // Patient2 -> Doctor1
+    addPatient_to_doc(docs->doctors[1],
+                      pats->patients[2]);  // Patient3 -> Doctor2
+    addPatient_to_doc(docs->doctors[2],
+                      pats->patients[3]);  // Patient4 -> Doctor3
+    addPatient_to_doc(docs->doctors[2],
+                      pats->patients[4]);  // Patient5 -> Doctor3
+
+    printf("Исходные данные: %d докторов, %d пациентов\n", docs->count,
+           pats->count);
+
+    // ----- 2. СОХРАНЕНИЕ В ТЕКСТОВЫЙ ФАЙЛ -----
+    save_to_txt(docs, pats, "test_data.txt");
+    printf("Сохранено в test_data.txt\n");
+
+    // ----- 3. ЗАГРУЗКА ИЗ ТЕКСТОВОГО ФАЙЛА И ПРОВЕРКА -----
+    delete_base_of_docs(&docs);
+    delete_base_of_pats(&pats);
+    docs = createBaseDocs();
+    pats = createBasePats();
+
+    load_from_txt(docs, pats, "test_data.txt");
+    printf("Загружено из test_data.txt: %d докторов, %d пациентов\n",
+           docs->count, pats->count);
+
+    // Проверяем целостность связей
+    int ok_txt = 1;
+    for (int i = 0; i < pats->count; i++) {
+        Patient *p = pats->patients[i];
+        if (p->doc) {
+            int found = 0;
+            for (int j = 0; j < p->doc->count; j++) {
+                if (p->doc->patients[j] == p) {
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                printf(
+                    "Ошибка в txt-загрузке: пациент %d не найден у доктора "
+                    "%d\n",
+                    p->ID, p->doc->ID);
+                ok_txt = 0;
+            }
+        }
+    }
+    printf("Проверка txt-загрузки: %s\n\n", ok_txt ? "OK" : "НЕ ПРОЙДЕНА");
+
+    // // ----- 4. СОХРАНЕНИЕ В БИНАРНЫЕ ФАЙЛЫ -----
+    base_docs_to_bin(docs);
+    base_pats_to_bin(pats);
+    printf("Сохранено в doctors.bin и patients.bin\n");
+
+    // ----- 5. ЗАГРУЗКА ИЗ БИНАРНЫХ ФАЙЛОВ И ПРОВЕРКА -----
+    delete_base_of_docs(&docs);
+    delete_base_of_pats(&pats);
+    docs = createBaseDocs();
+    pats = createBasePats();
+
+    load_doctors_from_bin(docs);
+    load_patients_from_bin(pats, docs);
+    printf("Загружено из бинарных файлов: %d докторов, %d пациентов\n",
+           docs->count, pats->count);
+
+    int ok_bin = 1;
+    for (int i = 0; i < pats->count; i++) {
+        Patient *p = pats->patients[i];
+        if (p->doc) {
+            int found = 0;
+            for (int j = 0; j < p->doc->count; j++) {
+                if (p->doc->patients[j] == p) {
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                printf(
+                    "Ошибка в bin-загрузке: пациент %d не найден у доктора "
+                    "%d\n",
+                    p->ID, p->doc->ID);
+                ok_bin = 0;
+            }
+        }
+    }
+    printf("Проверка bin-загрузки: %s\n", ok_bin ? "OK" : "НЕ ПРОЙДЕНА");
+
+    // Очистка
+    delete_base_of_docs(&docs);
+    delete_base_of_pats(&pats);
+
+    printf("\n========== ТЕСТ 4 ЗАВЕРШЁН ==========\n");
+}
+
 int main() {
     printf("\n╔════════════════════════════════════════════════════════╗\n");
     printf("║              СИСТЕМА ТЕСТИРОВАНИЯ                       ║\n");
@@ -414,7 +545,8 @@ int main() {
     printf("  1 - Тест 1: Базовый функционал (2 доктора, 5 пациентов)\n");
     printf("  2 - Тест 2: Краевые случаи (пустые базы, NULL, дубликаты)\n");
     printf("  3 - Тест 3: Большие данные (100 докторов, 500 пациентов)\n");
-    printf("  4 - Запустить все тесты\n");
+    printf("  4 - Тест 4: Чтение из текстового и бинарного файлов\n");
+    printf("  5 - Запустить все тесты\n");
     printf("  0 - Выход\n");
     printf("\nВаш выбор: ");
 
@@ -432,9 +564,13 @@ int main() {
             test_large_data();
             break;
         case 4:
+            test_file_io();
+            break;
+        case 5:
             test_basic_functionality();
             test_edge_cases();
             test_large_data();
+            test_file_io();
             printf("\n✅ ВСЕ ТЕСТЫ УСПЕШНО ЗАВЕРШЕНЫ!\n");
             break;
         case 0:

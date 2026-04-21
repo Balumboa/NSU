@@ -371,6 +371,8 @@ void test_reverse_order() {
 
     printf("Дерево после добавления 10,9,8,...,1:\n");
     print_avl_tree(tree, 0);
+    erase(tree, 3);
+    print_avl_tree(tree, 0);
 
     assert(is_bst(tree, -1000, 1000));
     assert(is_balanced(tree));

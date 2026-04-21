@@ -12,7 +12,7 @@ void save_patient_to_file(Patient *pat, int index) {
     memset(&dest, 0, sizeof(Data_Patient));
 
     dest.ID = pat->ID;
-    dest.ID_doctor = pat->doc->ID;
+    dest.ID_doctor = (pat->doc != NULL) ? pat->doc->ID : -1;
 
     if (pat->name)
         strncpy(dest.name, pat->name, 29);
@@ -164,4 +164,88 @@ void base_pats_to_bin(BaseoPats *base) {
     for (int i = 0; i < base->count; i++) {
         save_patient_to_file(base->patients[i], i);
     }
+}
+
+void load_doctors_from_bin(BaseoDocs *docs) {
+    FILE *f = fopen("doctors.bin", "rb");
+    if (!f) {
+        printf("Не удалось открыть doctors.bin для чтения\n");
+        return;
+    }
+
+    fseek(f, 0, SEEK_END);
+    long file_size = ftell(f);
+    int total_records = file_size / sizeof(Data_Doctor);
+    rewind(f);
+
+    for (int i = 0; i < total_records; i++) {
+        Data_Doctor ddata;
+        if (fread(&ddata, sizeof(Data_Doctor), 1, f) != 1)
+            break;
+
+        Doctor *doc = (Doctor *)malloc(sizeof(Doctor));
+        doc->ID = ddata.ID;
+        doc->name = strdup(ddata.name);
+        doc->text = strdup(ddata.text);
+        doc->count = 0;  // связи восстановятся позже
+        doc->capacity = 10;
+        doc->patients = (Patient **)calloc(10, sizeof(Patient *));
+
+        if (docs->count >= docs->capacity) {
+            docs->capacity *= 2;
+            docs->doctors = (Doctor **)realloc(
+                docs->doctors, docs->capacity * sizeof(Doctor *));
+        }
+        docs->doctors[docs->count++] = doc;
+    }
+
+    fclose(f);
+    printf("Загружено %d докторов из doctors.bin\n", docs->count);
+}
+
+void load_patients_from_bin(BaseoPats *pats, BaseoDocs *docs) {
+    FILE *f = fopen("patients.bin", "rb");
+    if (!f) {
+        printf("Не удалось открыть patients.bin для чтения\n");
+        return;
+    }
+
+    fseek(f, 0, SEEK_END);
+    long file_size = ftell(f);
+    int total_records = file_size / sizeof(Data_Patient);
+    rewind(f);
+
+    for (int i = 0; i < total_records; i++) {
+        Data_Patient pdata;
+        if (fread(&pdata, sizeof(Data_Patient), 1, f) != 1)
+            break;
+
+        Patient *pat = (Patient *)malloc(sizeof(Patient));
+        pat->ID = pdata.ID;
+        pat->name = strdup(pdata.name);
+        pat->text = strdup(pdata.text);
+        pat->doc = NULL;
+
+        if (pats->count >= pats->capacity) {
+            pats->capacity *= 2;
+            pats->patients = (Patient **)realloc(
+                pats->patients, pats->capacity * sizeof(Patient *));
+        }
+        pats->patients[pats->count++] = pat;
+
+        if (pdata.ID_doctor != -1) {
+            Doctor *doc = findDoc(docs, pdata.ID_doctor);
+            if (doc) {
+                addPatient_to_doc(doc, pat);
+            } else {
+                printf(
+                    "Предупреждение: пациент %d ссылается на несуществующего "
+                    "доктора %d\n",
+                    pat->ID, pdata.ID_doctor);
+            }
+        }
+    }
+
+    fclose(f);
+    printf("Загружено %d пациентов из patients.bin\n", pats->count);
 }

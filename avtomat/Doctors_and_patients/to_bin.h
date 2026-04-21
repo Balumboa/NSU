@@ -36,3 +36,7 @@ int find_doctor_pos_by_id(int targetID);
 void base_docs_to_bin(BaseoDocs *base);
 
 void base_pats_to_bin(BaseoPats *base);
+
+void load_doctors_from_bin(BaseoDocs *docs);
+
+void load_patients_from_bin(BaseoPats *pats, BaseoDocs *docs);
